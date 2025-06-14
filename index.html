@@ -36,16 +36,7 @@
         <p>Koleksi pilihan, tampilan elegan, harga bersahabat, plus sentuhan gaya santai.</p>
         <a href="katalog.html" class="cta-button">Lihat Katalog</a>
       </div>
-    </div>  
-    <div class="slide slide2">
-      <div class="slide-content">
-        <h2>Jaket Vintage 90s</h2>
-        <p>Sentuhan klasik dengan nuansa modern, siap bikin penampilan makin standout.</p>
-        <a href="katalog.html" class="cta-button">Beli Sekarang</a>
-      </div>
-    </div>
-  </div>
-  <div class="dots"></div>
+    </div> 
 </section>
 
 <!-- === PRODUK UNGGULAN === -->
@@ -92,49 +83,7 @@
     lastScroll = st <= 0 ? 0 : st;
   });
 
-  // Slider with dots & manual control
-  const slides = document.querySelectorAll('.slide');
-  const slider = document.querySelector('.slides');
-  const dots = document.querySelector('.dots');
-  let idx = 0;
-
-  // Buat dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = 'dot';
-    dot.addEventListener('click', () => goToSlide(i));
-    dots.appendChild(dot);
-  });
-
-  // Fungsi pindah slide
-  function goToSlide(n) {
-    idx = n;
-    slider.style.transform = `translateX(-${n * 100}%)`;
-    updateDots();
-  }
-
-  // Update tampilan dots
-  function updateDots() {
-    document.querySelectorAll('.dot').forEach((d, i) =>
-      d.classList.toggle('active', i === idx)
-    );
-  }
-
-  // Inisialisasi awal
-  goToSlide(0);
-
-  // Geser manual (swipe gesture)
-  let startX = 0;
-  slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-  slider.addEventListener('touchend', e => {
-    let endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) goToSlide((idx + 1) % slides.length);
-    if (endX - startX > 50) goToSlide((idx - 1 + slides.length) % slides.length);
-  });
-
-  // === SLIDE OTOMATIS DINONAKTIFKAN ===
-  // Jika ingin aktifkan otomatis kembali, hapus komentar di bawah ini:
-  // setInterval(() => goToSlide((idx + 1) % slides.length), 5000);
+  // Tidak perlu slider logic karena hanya satu slide
 </script>
 
 </body>
