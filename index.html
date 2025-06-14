@@ -6,6 +6,83 @@
   <title>7starscnd - Pakaian Thrift Premium</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 200%;
+    }
+
+    .slide {
+      flex: 1 0 100%;
+      position: relative;
+      height: 80vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top right, rgba(0, 0, 0, 0.5), rgba(0,0,0,0.2));
+      z-index: 1;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 90%;
+    }
+
+    .slide h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .slide p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      padding: 0.8rem 1.5rem;
+      background-color: #ffffffcc;
+      color: #222;
+      font-weight: bold;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: #333;
+    }
+  </style>
 </head>
 <body>
 
@@ -28,21 +105,19 @@
 
 <section class="hero">
   <div class="slides" id="slider">
-    <div class="slide">
+    <div class="slide" style="background-image: url('foto1.jpeg');">
       <div class="slide-content">
         <h2>Thrifting Keren & Terjangkau</h2>
         <p>Koleksi pilihan, tampilan elegan, harga bersahabat, plus sedikit gaya santai.</p>
         <a href="katalog.html" class="cta-button">Lihat Katalog</a>
       </div>
-      <img src="foto1.jpeg" alt="Fashion Thrift" />
     </div>
-    <div class="slide">
+    <div class="slide" style="background-image: url('foto2.jpeg');">
       <div class="slide-content">
         <h2>Jaket Vintage 90s</h2>
         <p>Sentuhan klasik, tetap modern, dan siap bikin gaya makin standout.</p>
         <a href="katalog.html" class="cta-button">Beli Sekarang</a>
       </div>
-      <img src="foto2.jpeg" alt="Jaket Vintage" />
     </div>
   </div>
   <div class="dots"></div>
@@ -76,7 +151,9 @@
 </footer>
 
 <script>
-  document.querySelector('.hamburger').onclick = () => document.querySelector('.nav-menu').classList.toggle('show');
+  document.querySelector('.hamburger').onclick = () => {
+    document.querySelector('.nav-menu').classList.toggle('show');
+  };
 
   let lastScroll = 0;
   const nav = document.querySelector('.navbar');
@@ -91,7 +168,7 @@
   const dots = document.querySelector('.dots');
   let idx = 0;
 
-  slides.forEach((s,i) => {
+  slides.forEach((s, i) => {
     const dot = document.createElement('div');
     dot.className = 'dot';
     dot.addEventListener('click', () => goToSlide(i));
@@ -100,19 +177,19 @@
 
   function goToSlide(n) {
     idx = n;
-    slider.style.transform = `translateX(-${n*100}%)`;
-    dots.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+    slider.style.transform = `translateX(-${n * 100}%)`;
+    dots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
   }
 
-  let auto = setInterval(() => goToSlide((idx+1) % slides.length), 5000);
+  let auto = setInterval(() => goToSlide((idx + 1) % slides.length), 5000);
   goToSlide(0);
 
   let startX = 0;
-  slider.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
-  slider.addEventListener('touchend',e=>{
-    let endX=e.changedTouches[0].clientX;
-    if(startX-endX>50) goToSlide((idx+1)%slides.length);
-    if(endX-startX>50) goToSlide((idx-1+slides.length)%slides.length);
+  slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  slider.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) goToSlide((idx + 1) % slides.length);
+    if (endX - startX > 50) goToSlide((idx - 1 + slides.length) % slides.length);
   });
 </script>
 
