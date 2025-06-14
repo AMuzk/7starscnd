@@ -92,12 +92,13 @@
     lastScroll = st <= 0 ? 0 : st;
   });
 
-  // Slider with dots & auto
+  // Slider with dots & manual control
   const slides = document.querySelectorAll('.slide');
   const slider = document.querySelector('.slides');
   const dots = document.querySelector('.dots');
   let idx = 0;
 
+  // Buat dots
   slides.forEach((_, i) => {
     const dot = document.createElement('div');
     dot.className = 'dot';
@@ -105,22 +106,24 @@
     dots.appendChild(dot);
   });
 
+  // Fungsi pindah slide
   function goToSlide(n) {
     idx = n;
     slider.style.transform = `translateX(-${n * 100}%)`;
     updateDots();
   }
 
+  // Update tampilan dots
   function updateDots() {
     document.querySelectorAll('.dot').forEach((d, i) =>
       d.classList.toggle('active', i === idx)
     );
   }
 
-  setInterval(() => goToSlide((idx + 1) % slides.length), 5000);
+  // Inisialisasi awal
   goToSlide(0);
 
-  // Swipe gesture
+  // Geser manual (swipe gesture)
   let startX = 0;
   slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
   slider.addEventListener('touchend', e => {
@@ -128,6 +131,10 @@
     if (startX - endX > 50) goToSlide((idx + 1) % slides.length);
     if (endX - startX > 50) goToSlide((idx - 1 + slides.length) % slides.length);
   });
+
+  // === SLIDE OTOMATIS DINONAKTIFKAN ===
+  // Jika ingin aktifkan otomatis kembali, hapus komentar di bawah ini:
+  // setInterval(() => goToSlide((idx + 1) % slides.length), 5000);
 </script>
 
 </body>
