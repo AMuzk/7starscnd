@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>7starscnd - Pakaian Thrift Premium</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <h1 class="logo">7starscnd</h1>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="slides" id="slider">
+    <div class="slide">
+      <div class="slide-content">
+        <h2>Thrifting Keren & Terjangkau</h2>
+        <p>Koleksi pilihan, tampilan elegan, harga bersahabat, plus sedikit gaya santai.</p>
+        <a href="katalog.html" class="cta-button">Lihat Katalog</a>
+      </div>
+      <img src="foto1.jpeg" alt="Fashion Thrift" />
+    </div>
+    <div class="slide">
+      <div class="slide-content">
+        <h2>Jaket Vintage 90s</h2>
+        <p>Sentuhan klasik, tetap modern, dan siap bikin gaya makin standout.</p>
+        <a href="katalog.html" class="cta-button">Beli Sekarang</a>
+      </div>
+      <img src="foto2.jpeg" alt="Jaket Vintage" />
+    </div>
+  </div>
+  <div class="dots"></div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Produk Unggulan</h2>
+    <div class="product-slider">
+      <div class="product-card">
+        <img src="foto3.jpeg" alt="Jaket Retro Vintage">
+        <h3>Jaket Retro Vintage</h3>
+        <a href="https://id.shp.ee/AUd7RWA" class="price">Rp 110.000</a>
+      </div>
+      <div class="product-card">
+        <img src="foto4.jpeg" alt="Crewneck Premium">
+        <h3>Crewneck Premium</h3>
+        <a href="https://id.shp.ee/oNAyw8f" class="price">Rp 150.000</a>
+      </div>
+      <div class="product-card">
+        <img src="foto5.jpeg" alt="Celana Casual Stylish">
+        <h3>Celana Casual Stylish</h3>
+        <a href="https://id.shp.ee/azQdpyi" class="price">Rp 110.000</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2025 7starscnd. Thrift Premium.</p>
+</footer>
+
+<script>
+  document.querySelector('.hamburger').onclick = () => document.querySelector('.nav-menu').classList.toggle('show');
+
+  let lastScroll = 0;
+  const nav = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    nav.style.top = st > lastScroll ? '-100px' : '0';
+    lastScroll = st <= 0 ? 0 : st;
+  });
+
+  const slides = document.querySelectorAll('.slide');
+  const slider = document.querySelector('.slides');
+  const dots = document.querySelector('.dots');
+  let idx = 0;
+
+  slides.forEach((s,i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    dot.addEventListener('click', () => goToSlide(i));
+    dots.append(dot);
+  });
+
+  function goToSlide(n) {
+    idx = n;
+    slider.style.transform = `translateX(-${n*100}%)`;
+    dots.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  }
+
+  let auto = setInterval(() => goToSlide((idx+1) % slides.length), 5000);
+  goToSlide(0);
+
+  let startX = 0;
+  slider.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+  slider.addEventListener('touchend',e=>{
+    let endX=e.changedTouches[0].clientX;
+    if(startX-endX>50) goToSlide((idx+1)%slides.length);
+    if(endX-startX>50) goToSlide((idx-1+slides.length)%slides.length);
+  });
+</script>
+
+</body>
+</html>

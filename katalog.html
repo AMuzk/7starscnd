@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>7starscnd - Pakaian Thrift Premium</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <h1 class="logo">7starscnd</h1>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html" class="active">Katalog</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Katalog Produk</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="foto3.jpeg" alt="Jaket Vintage" />
+        <h3>Jaket Retro Vintage</h3>
+        <a href="https://id.shp.ee/AUd7RWA" class="price">Rp 110.000</a>
+      </div>
+      <div class="product-card">
+        <img src="foto4.jpeg" alt="Crewneck" />
+        <h3>Crewneck Premium</h3>
+        <a href="https://id.shp.ee/oNAyw8f" class="price">Rp 150.000</a>
+      </div>
+      <div class="product-card">
+        <img src="foto5.jpeg" alt="Celana Casual" />
+        <h3>Celana Casual Stylish</h3>
+        <a href="https://id.shp.ee/azQdpyi" class="price">Rp 110.000</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2025 7starscnd. Style baru, harga bersahabat.</p>
+</footer>
+
+<script>
+  // Hamburger toggle
+  document.querySelector('.hamburger').onclick = () => {
+    document.querySelector('.nav-menu').classList.toggle('show');
+  };
+
+  // Hide navbar on scroll down, show on scroll up
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.navbar');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    navbar.style.top = scrollTop > lastScrollTop ? "-100px" : "0";
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }, false);
+</script>
+</body>
+</html>

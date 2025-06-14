@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>7starscnd - Pakaian Thrift Premium</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <h1 class="logo">7starscnd</h1>
+    
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="tentang.html" class="active">Tentang</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container tentang-kami">
+    <h2 class="section-title">Tentang 7starscnd</h2>
+    
+    <p>7starscnd berdiri di tahun 2024, berawal dari keinginan sederhana: ingin punya usaha sampingan yang enggak cuma nambah penghasilan, tapi juga nambah semangat hidup. Karena hidup bukan cuma soal kerja 9 to 5, tapi juga soal ngejar mimpi—meskipun mimpinya sempat ditunda karena scroll TikTok.</p>
+
+    <p>Kami fokus pada fashion thrift berkualitas tinggi dengan harga yang tetap bersahabat—karena kami tahu, tampil keren itu hak semua orang, bukan cuma milik anak sultan. Semua barang kami pilih langsung, dicek satu per satu, dan dikemas dengan cinta… serta sedikit harapan semoga laku.</p>
+
+    <p>7starscnd hadir buat kamu yang peduli gaya, tapi juga sadar pentingnya hidup berkelanjutan. Thrifting bukan cuma soal hemat, tapi juga langkah kecil untuk bumi yang lebih baik (dan lemari yang lebih penuh). Kami percaya, sukses itu dimulai dari langkah kecil—bahkan meski langkahnya sambil ngopi sore di kosan.</p>
+    
+    <p>Dan ya, mimpi kami besar: bisa jadi brand thrift favorit se-Indonesia, atau minimal bisa bayar cicilan tepat waktu tiap bulan. Tapi yang pasti, kami jalanin semua ini dengan hati, niat baik, dan sedikit selera humor. Terima kasih udah jadi bagian dari perjalanan kami.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2025 7starscnd. Bangga jadi thrift shopper!</p>
+</footer>
+
+<script>
+  document.querySelector('.hamburger').onclick = () => {
+    document.querySelector('.nav-menu').classList.toggle('show');
+  };
+
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.navbar');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    navbar.style.top = scrollTop > lastScrollTop ? "-100px" : "0";
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }, false);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>7starscnd - Pakaian Thrift Premium</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <h1 class="logo">7starscnd</h1>
+
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="kontak.html" class="active">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Hubungi Kami</h2>
+    <p style="text-align: center; color: #ccc; max-width: 600px; margin: 0 auto 20px;">Ada pertanyaan soal produk, pengiriman, atau mau join jadi reseller? Kirim pesan lewat formulir di bawah, atau langsung hubungi kami via WhatsApp, Instagram, atau email. Fast respon, asal nggak pas jam tidur ya 😄</p>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Nama Lengkap" required>
+      <input type="email" placeholder="Email Aktif" required>
+      <textarea rows="5" placeholder="Pesan Anda..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+
+    <div class="kontak-langsung">
+      <h3 style="margin-top: 40px;">Atau hubungi langsung via:</h3>
+      <a href="https://wa.me/62895378233291" target="_blank">📱 WhatsApp: 0895-3782-33291</a>
+      <a href="mailto:ahmadmzk113@gmail.com" target="_blank">📧 Email: ahmadmzk113@gmail.com</a>
+      <a href="https://www.instagram.com/7starscnd?igsh=MWZ3d3plZzl6dXFzMg==" target="_blank">📷 Instagram: @7starscnd</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2025 7starscnd. Chat kami untuk info produk & reseller.</p>
+</footer>
+
+<script>
+  document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Terima kasih! Pesan Anda sudah kami terima. Kami akan balas secepatnya ✨');
+    this.reset();
+  });
+
+  document.querySelector('.hamburger').onclick = () => {
+    document.querySelector('.nav-menu').classList.toggle('show');
+  };
+
+  let lastScrollTop = 0;
+  const navbar = document.querySelector('.navbar');
+
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    navbar.style.top = scrollTop > lastScrollTop ? "-100px" : "0";
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }, false);
+</script>
+
+</body>
+</html>
